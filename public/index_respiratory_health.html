@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicinal Plant Virtual Tour</title>
+    <link rel="icon" href="data:,">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        #tour-container {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .info-box {
+
+  position: absolute;
+
+  top: 20px;
+  left: 20px;
+
+  background: rgba(0,0,0,0.75);
+
+  color: white;
+
+  padding: 18px;
+
+  border-radius: 18px;
+
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  width: 280px;
+
+  line-height: 1.6;
+
+  box-shadow:
+    0 0 20px rgba(0,255,100,0.2);
+
+  font-size: 15px;
+}
+/* =========================
+   FLOATING PLANT LABEL
+========================= */
+
+#plant-label {
+
+  position: absolute;
+
+  display: none;
+
+  padding: 12px 18px;
+
+  background: rgba(0,0,0,0.82);
+
+  color: white;
+
+  border-radius: 14px;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  box-shadow:
+    0 0 20px rgba(0,255,100,0.25);
+
+  pointer-events: none;
+
+  transform: translate(-50%, -50%);
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+
+  z-index: 999;
+}
+
+/* SMALL ARROW */
+
+#plant-label::after {
+
+  content: "";
+
+  position: absolute;
+
+  bottom: -8px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border-width: 8px 8px 0 8px;
+
+  border-style: solid;
+
+  border-color:
+    rgba(0,0,0,0.82)
+    transparent
+    transparent
+    transparent;
+}
+#plant-label {
+
+  animation: labelPop 0.35s ease;
+}
+
+@keyframes labelPop {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.8);
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+</head>
+<body>
+    <div id="tour-container"></div>
+    <div id="plant-label"></div>
+    <div class="info-box" id="info-box">
+        <h2>🌿 Respiratory Health Garden</h2>
+        <p>Explore medicinal plants for respiratory health in immersive 3D.</p>
+        <p>Use mouse + arrow keys to move around.</p>
+    </div>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    
+    <!-- Custom JavaScript for the Virtual Tour -->
+    <script src="tour_respiratory_health.js"></script>
+</body>
+</html>
